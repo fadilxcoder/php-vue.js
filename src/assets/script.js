@@ -1,7 +1,10 @@
 /*
-    Using Vue.js with PHP basic explanation
-    ~ Avoid spaces...
+    Using Vue.js with PHP explanation
 */
+
+// In order to have $_POST data on server side, use this & append data to it.
+const params = new URLSearchParams();
+
 var application = new Vue({
 	el:'#crudApp', // Main Selector ID
 	
@@ -16,14 +19,59 @@ var application = new Vue({
 	// Methods or Functions
 	methods:{
 		fetchAllData:function(){
-		  //  axios.post('handler/functions.php', {
+
+			params.append('uname', 'fadilxcoder');
+			params.append('uid', '17');
+			
+			// POST data using axios function only
+/*			
+			axios({
+			  method: 'POST',
+			  url: 'handler/functions.php',
+			  data: params,
+			})
+*/			
+			
+			// Send parameters on server side, you need to use file_get_contents('php://input')
+			
+/*			
+		    axios.post('handler/functions.php', {
+		    	firstName: 'fadil',
+    			lastName: 'xcoder',
+			})
+*/
+
+			// POST data using axios.post function only
+/*			
+			axios.post('handler/functions.php', params)
+*/
+
+			// GET data using axios.get function only
+/*
 			axios.get('handler/functions.php', {
-				action:'fetchall'
-			}).then(function(response){
+				params: {
+			      id: 12345,
+			      idx: 'XYZ'
+			    }
+			})
+*/			
+			axios.get('handler/functions.php')
+			.then(function(response){
 			    console.log(response);
+			    console.log(response.data);
+			    console.log(response.status);
+			    console.log(response.statusText);
+			    console.log(response.headers);
+			    console.log(response.config);
+			    
+			    /*
+			    	Affecting the 'v-for="row in allData"' with the response data
+			    */
 				application.allData = response.data;
 			});
 		},
+		
+		
 		openModel:function(){
 			application.first_name = '';
 			application.last_name = '';
@@ -95,6 +143,9 @@ var application = new Vue({
 				});
 			}
 		}
+	
+	
+	
 	},
 	created:function(){
 		this.fetchAllData();

@@ -50,6 +50,9 @@ function insert($tbl, $data)
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
-var_dump($method);
+
+// var_dump(json_decode(file_get_contents('php://input')));
+// var_dump($_POST);
+// var_dump($_GET);
 
 echo json_encode(selectAll());
