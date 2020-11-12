@@ -25,34 +25,13 @@ function converter($query)
     return $arr;
 }
 
-function selectAll()
+function selectAllWines()
 {
     global $connection;
-    $sql    = "SELECT * FROM contacts";
+    $sql    = "SELECT * FROM wines ORDER BY publish_date DESC";
     $query  = $connection->query($sql);
     $result = converter($query);
     return $result;
 }
 
-function insert($tbl, $data)
-{
-    global $connection;
-    foreach( array_keys($data) as $key ) 
-    {
-        $fields[] = "`$key`";
-        $values[] = "'" .$data[$key] . "'";
-    }
-    $fields = implode(",", $fields);
-    $values = implode(",", $values);
-    $sql = "INSERT INTO `$tbl`($fields) VALUES ($values)";
-    $connection->query($sql);
-    return true;
-}
-
-$method = $_SERVER['REQUEST_METHOD'];
-
-// var_dump(json_decode(file_get_contents('php://input')));
-// var_dump($_POST);
-// var_dump($_GET);
-
-echo json_encode(selectAll());
+echo json_encode(selectAllWines());
