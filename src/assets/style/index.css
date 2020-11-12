@@ -322,6 +322,15 @@ i {
   }
 }
 
+.item-anim-enter-active, .item-anim-leave-active {
+  opacity: 1;
+  transition: 0.8s;
+}
+.item-anim-enter, .item-anim-leave-to {
+  opacity: 0;
+  transition: 0.1s;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
