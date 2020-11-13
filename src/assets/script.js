@@ -4,6 +4,7 @@
 
 // In order to have $_POST data on server side, use this & append data to it.
 const params = new URLSearchParams();
+const URL = 'handler/functions.php';
 
 var application = new Vue({
 	el:'#crudApp', // Main Selector ID
@@ -14,6 +15,7 @@ var application = new Vue({
 		myModel: false,
 		actionButton: 'Insert',
 		dynamicTitle: 'Add Data',
+		event: '',
 	},
 	
 	// Methods or Functions
@@ -24,13 +26,13 @@ var application = new Vue({
 			params.append('uid', '17');
 			
 			// POST data using axios function only
-/*			
-			axios({
+			
+/*			axios({
 			  method: 'POST',
 			  url: 'handler/functions.php',
 			  data: params,
 			})
-*/			
+*/
 			
 			// Send parameters on server side, you need to use file_get_contents('php://input')
 			
@@ -55,99 +57,115 @@ var application = new Vue({
 			    }
 			})
 */			
-			axios.get('handler/functions.php')
+
+			axios.get(URL)
 			.then(function(response){
-			    console.log(response);
-			    console.log(response.data);
-			    console.log(response.status);
-			    console.log(response.statusText);
-			    console.log(response.headers);
-			    console.log(response.config);
-			    
-			    /*
-			    	Affecting the 'v-for="row in allData"' with the response data
-			    */
-				application.allData = response.data;
-			});
+/*
+			    console.log(response);				// Object
+			    console.log(response.data);			// Data needed
+			    console.log(response.status);		// 200
+			    console.log(response.statusText);	// 
+			    console.log(response.headers);		// Object
+			    console.log(response.config);		// Object
+*/			    
+				application.allData = response.data; // Affecting the 'v-for="row in allData"' with the response data
+			})
+			;
 		},
 		
-		
-		openModel:function(){
-			application.first_name = '';
-			application.last_name = '';
+		openModel: function() {
+			application.name = application.email = application.city = application.country = application.job = '';
 			application.actionButton = "Insert";
 			application.dynamicTitle = "Add Data";
+			application.description = "Please insert your data !";
+			application.event = "insertFunction";
+			application.hiddenId = null;
 			application.myModel = true;
 		},
-		submitData:function(){
-			if(application.first_name != '' && application.last_name != '')
-			{
-				if(application.actionButton == 'Insert')
-				{
-					axios.post('action.php', {
-						action:'insert',
-						firstName:application.first_name, 
-						lastName:application.last_name
-					}).then(function(response){
-						application.myModel = false;
-						application.fetchAllData();
-						application.first_name = '';
-						application.last_name = '';
-						alert(response.data.message);
-					});
+		
+		submitData: function() {
+			
+			if (
+				application.name != '' && 
+				application.email != ''
+			) {
+				
+				if (application.event == 'insertFunction')	{
+					saveData(application, 'insertFunction');
 				}
-				if(application.actionButton == 'Update')
-				{
-					axios.post('action.php', {
-						action:'update',
-						firstName : application.first_name,
-						lastName : application.last_name,
-						hiddenId : application.hiddenId
-					}).then(function(response){
-						application.myModel = false;
-						application.fetchAllData();
-						application.first_name = '';
-						application.last_name = '';
-						application.hiddenId = '';
-						alert(response.data.message);
-					});
+				
+				if (application.event == 'updateFunction')	{
+					saveData(application, 'updateFunction');
 				}
-			}
-			else
-			{
-				alert("Fill All Field");
+			
+			} else {
+				// alert("Fill All Field");
 			}
 		},
-		fetchData:function(id){
-			axios.post('action.php', {
-				action:'fetchSingle',
-				id:id
-			}).then(function(response){
-				application.first_name = response.data.first_name;
-				application.last_name = response.data.last_name;
-				application.hiddenId = response.data.id;
-				application.myModel = true;
-				application.actionButton = 'Update';
-				application.dynamicTitle = 'Edit Data';
-			});
+		
+		fetchData: function(id) {
+			fetchSingleData(application, id);
 		},
+		
 		deleteData:function(id){
-			if(confirm("Are you sure you want to remove this data?"))
-			{
-				axios.post('action.php', {
-					action:'delete',
-					id:id
-				}).then(function(response){
-					application.fetchAllData();
-					alert(response.data.message);
-				});
+			if (confirm("Are you sure you want to remove this data?")) {
+				deleteData(application, id);
 			}
 		}
 	
-	
-	
 	},
-	created:function(){
+	created: function() {
 		this.fetchAllData();
 	}
 });
+
+function saveData(application, action) {
+	axios.post(URL, {
+		action : action,
+		name : application.name, 
+		email : application.email,
+		city : application.city,
+		country : application.country,
+		job : application.job,
+		id : application.hiddenId,
+	})
+	.then( function(response) {
+		console.log(response);
+		application.myModel = false;
+		application.fetchAllData();
+		application.name = application.email = application.city = application.country = application.job = '';
+		application.hiddenId = null;
+	});
+}
+
+function fetchSingleData(application, id) {
+	axios.post(URL, {
+		action:'fetchSingle',
+		id:id
+	})
+	.then(function(response){
+		console.log(response.data.name);
+		application.name			= response.data.name;
+		application.email			= response.data.email;
+		application.city			= response.data.city;
+		application.country 		= response.data.country;
+		application.job 			= response.data.job;
+		
+		application.hiddenId		= response.data.id;
+		application.myModel 		= true;
+		application.actionButton	= 'Update';
+		application.dynamicTitle	= 'Edit Data';
+		application.description = "Please update your data !";
+		application.event = "updateFunction";
+	});
+}
+
+function deleteData(application, id) {
+	axios.post(URL, {
+		action:'deleteFunction',
+		id:id
+	})
+	.then( function(response) {
+		application.fetchAllData();
+	});
+}

@@ -49,10 +49,87 @@ function insert($tbl, $data)
     return true;
 }
 
+function selectOne($id)
+{
+    global $connection;
+    $sql    = "SELECT * FROM contacts where id = $id";
+    $query  = $connection->query($sql);
+    $result = converter($query);
+    return $result[0];
+}
+
+function update($array, $id)
+{
+    global $connection;
+    $sql = "UPDATE contacts SET ";
+    foreach($array as $key => $value)
+    {
+        $sql .= $key."='". $value."', ";
+    }
+    $sql = rtrim($sql, ", ");
+    $sql .= " WHERE `id` = '". $id ."' ";
+    echo $sql;
+    $connection->query($sql);
+}
+
+function deletetOne($id)
+{
+    global $connection;
+    $sql    = "DELETE FROM contacts where id = $id";
+    $query  = $connection->query($sql);
+    return $query;
+}
+
 $method = $_SERVER['REQUEST_METHOD'];
 
-// var_dump(json_decode(file_get_contents('php://input')));
+// var_dump(json_decode(file_get_contents('php://input'))); // Form submission - POST data
 // var_dump($_POST);
 // var_dump($_GET);
+// var_dump($method);
 
-echo json_encode(selectAll());
+
+switch($method) {
+    case('GET'):
+        echo json_encode(selectAll());
+        break;
+    case('POST'):
+        $posts = json_decode(file_get_contents('php://input'));
+        
+        switch($posts->action) {
+            case('insertFunction'):
+                $arr = [
+                    'name' => $posts->name,
+                    'email' => $posts->email,
+                    'city' => $posts->city,
+                    'country' => $posts->country,
+                    'job' => $posts->job,
+                ];
+                
+                insert('contacts', $arr);
+                echo json_encode(selectAll());
+                break;
+            case('fetchSingle'):
+                echo json_encode(selectOne($posts->id));
+                break;
+            case('updateFunction'):
+                $arr = [
+                    'name' => $posts->name,
+                    'email' => $posts->email,
+                    'city' => $posts->city,
+                    'country' => $posts->country,
+                    'job' => $posts->job,
+                ];
+                
+                update($arr, $posts->id);
+                echo json_encode(selectAll());
+                break;
+            case('deleteFunction'):
+                deletetOne($posts->id);
+                echo json_encode(selectAll());
+                break;
+        }
+        
+        break;
+    default:
+        echo json_encode(selectAll());
+}
