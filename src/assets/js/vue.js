@@ -53,7 +53,8 @@ const vue = new Vue({
     // Called when page load
     mounted() {
         axios
-        .get('handler/functions.php')
+        // .get('handler/functions.php')
+        .get('handler/json-vue.json')
         .then((resp) => {
             // Response information is returned
             // console.log(resp);
