@@ -7,6 +7,7 @@ const params = new URLSearchParams();
 const URL = 'handler/functions.php';
 
 var application = new Vue({
+	
 	el:'#crudApp', // Main Selector ID
 	
 	// Variables here
@@ -107,16 +108,19 @@ var application = new Vue({
 			fetchSingleData(application, id);
 		},
 		
-		deleteData:function(id){
+		deleteData: function(id){
 			if (confirm("Are you sure you want to remove this data?")) {
 				deleteData(application, id);
 			}
 		}
 	
 	},
+	
+	// Vue ~ check documentation
 	created: function() {
 		this.fetchAllData();
-	}
+	},
+	
 });
 
 function saveData(application, action) {
