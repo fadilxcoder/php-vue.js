@@ -7,7 +7,7 @@
     ¦------------------------------------------¦
     ¦           HELIFOX MVC FRAMEWORK          ¦
     ¦            was developed by...           ¦
-    ¦               FADIL XCODER               ¦
+    ¦               FADILXCODER                ¦
     ¦------------------------------------------¦
     ¦      www.facebook.com/fadil.xcoder       ¦
     +------------------------------------------+
@@ -18,8 +18,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>HELIFOX MVC FRAMEWORK</title>
-        <link rel="shortcut icon" type="image/x-icon" href="public/favicon.ico"/>
+        <title>HELIFOX 404</title>
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo URL?>favicon.ico"/>
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Styles -->
         <style>
@@ -28,30 +28,18 @@
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
-                height: 100vh;
                 margin: 0;
-            }
-            .full-height {
-                height: 100vh;
             }
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
             }
-            .position-ref {
-                position: relative;
-            }
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
             .content {
                 text-align: center;
             }
-            .m-b-md {
-                margin-bottom: 30px;
+            .title {
+                font-size: 84px;
             }
             .img-responsive{
                 height: auto;
@@ -62,26 +50,20 @@
             img{
                 box-shadow: 0px 0px 20px 10px #888888;
                 border-radius: 100%;
-                -webkit-transition: -webkit-transform .8s ease-in-out;
-                transition: transform 2.5s ease-in-out;
+                zoom: 0.5;
             }
-            a{
-                border:0;
-                outline: none;
-            }
-            img:hover {
-                -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+            .title  p{
+                margin: 10px 0px;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center">
             <div class="content">
-                <div class="title m-b-md">
-                    <a href="https://github.com/fadilxcoder/helifox" target="_blank">
-                        <img src="public/assets/images/helifox-logo.png" class="img-responsive" alt="logo">
-                    </a>
+                <div class="title">
+                    <p>404</p>
+                    <p>PAGE NOT FOUND</p>
+                    <img src="<?php echo URL?>assets/images/helifox-logo.png" class="img-responsive" alt="logo">
                 </div>
             </div>
         </div>
