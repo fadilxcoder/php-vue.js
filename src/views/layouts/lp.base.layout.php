@@ -11,17 +11,10 @@
         <link href="<?php echo URL ?>assets/css/modern-business.css" rel="stylesheet">
     </head>
     <body>
+        <?php include __DIR__ . '/../inc/header.php'; ?>
         <div id="vue-app">
             <?php echo $this->section('landingPage') ?>
         </div>
-        <script src="<?php echo URL ?>assets/jquery/jquery.min.js"></script>
-        <script src="<?php echo URL ?>assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
-        <script>
-            const currentUrl = '<?php echo URL ?>'
-            const routingUrl = '<?php echo URL ?>?url='
-        </script>
-        <script type="module" src="<?php echo URL ?>assets/js/scripts.js"></script>
+        <?php include __DIR__ . '/../inc/footer.php'; ?>
     </body>
 </html>

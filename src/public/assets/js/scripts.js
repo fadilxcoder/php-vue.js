@@ -13,6 +13,9 @@ var app = new Vue({
         getProductList: function() {
             this.$App.getProductList(this);
         },
+        getSingleProduct: function(id) {
+            return routingUrl + 'product&id=' + id;
+        }
     },
     
     created: function() {

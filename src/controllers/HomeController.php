@@ -45,6 +45,13 @@ class HomeController extends Controller{
             'products' => $this->hm->selectAll('products', 'OBJECT_CON')
         ]);
     }
+    
+    public function getSingleProduct()
+    {
+        echo json_encode([
+            'http' => 'ok',
+        ]);
+    }
 
     public function __404()
     {
