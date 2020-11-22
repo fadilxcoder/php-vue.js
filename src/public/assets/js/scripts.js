@@ -14,7 +14,7 @@ var app = new Vue({
             this.$App.getProductList(this);
         },
         getSingleProduct: function(id) {
-            return routingUrl + 'product&id=' + id;
+            this.$App.viewSingleProductUrlGenerator(id);
         }
     },
     

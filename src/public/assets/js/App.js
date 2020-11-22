@@ -16,6 +16,10 @@ class App
 		    app.products = response.data.products
 		})
     }
+    
+    viewSingleProductUrlGenerator(id) {
+        return routingUrl + 'product&id=' + id;
+    }
 }
 
 export default App;
