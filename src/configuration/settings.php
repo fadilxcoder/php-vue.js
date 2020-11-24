@@ -24,16 +24,16 @@
 *   Define the base url of the project
 */
 
-define('URL', 'https://' . $_SERVER['HTTP_HOST'] . '/');
+define('URL', 'http://vue-php.local/');
 
 /*
 *   Database configuration. Set ACTIVATE to TRUE if project will be using MySQL DATABASE and fill connection details.
 */
 define('ACTIVATE',  'TRUE');
-define('HOST',      'database');
-define('USERNAME',  'myuser');
-define('PASSWORD',  'secret');
-define('DATABASE',  'mydb');
+define('HOST',      'localhost');
+define('USERNAME',  'root');
+define('PASSWORD',  '');
+define('DATABASE',  'experimental_db');
 
 /*
 * DEFINE ENVIRONMENT, Allowed environments variables : development / production

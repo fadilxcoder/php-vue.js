@@ -14,7 +14,7 @@ var app = new Vue({
             this.$App.getProductList(this);
         },
         getSingleProduct: function(id) {
-            this.$App.viewSingleProductUrlGenerator(id);
+            return this.$App.viewSingleProductUrlGenerator(id);
         }
     },
     

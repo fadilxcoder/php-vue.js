@@ -18,7 +18,7 @@ class App
     }
     
     viewSingleProductUrlGenerator(id) {
-        return routingUrl + 'product&id=' + id;
+        return routingUrl + 'product?id=' + id;
     }
 }
 

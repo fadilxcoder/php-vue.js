@@ -10,7 +10,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
 <script>
-    const appUrl = '<?php echo URL ?>'
-    const routingUrl = '<?php echo URL ?>?url='
+    const routingUrl = '<?php echo URL ?>';
 </script>
 <script type="module" src="<?php echo URL ?>assets/js/scripts.js"></script>
