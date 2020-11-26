@@ -5,7 +5,7 @@
 ?>
 
 <?php $this->start('landingPage') ?>
-<div class="row">
+<div class="row" id="product" :data-product-id="<?php echo $this->e($response->id) ?>">
 	<div class="col-md-8">
 		<img class="img-fluid" src="<?php echo $this->e($response->image) ?>" alt="">
 	</div>

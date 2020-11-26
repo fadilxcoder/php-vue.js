@@ -33,8 +33,11 @@
  *      Do NOT remove $route['default'], but you can change it..
 */
 $route['default']   = 'HomeController@index';
+
 $route['home']      = 'HomeController@index';
-$route['populate-db'] = 'HomeController@populateDatabase';
 $route['get-product-list'] = 'HomeController@getProductList';
+
 $route['product'] = 'HomeController@singleProduct';
 $route['get-single-product'] = 'HomeController@getSingleProduct';
+
+$route['populate-db'] = 'HomeController@populateDatabase';

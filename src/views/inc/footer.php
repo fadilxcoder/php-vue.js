@@ -11,5 +11,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"></script>
 <script>
     const routingUrl = '<?php echo URL ?>';
+    const currentUrl = '<?php echo (isset($_GET['url'])) ? $_GET['url'] : 'home' ?>';
 </script>
 <script type="module" src="<?php echo URL ?>assets/js/scripts.js"></script>

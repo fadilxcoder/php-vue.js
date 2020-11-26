@@ -7,18 +7,31 @@ var app = new Vue({
     
     data: {
         products: '',
+        productId: '',
     },
     
     methods: {
         getProductList: function() {
             this.$App.getProductList(this);
         },
-        getSingleProduct: function(id) {
+        getSingleProductUrl: function(id) {
             return this.$App.viewSingleProductUrlGenerator(id);
         }
     },
     
     created: function() {
-		this.getProductList();
-	},
+        this.getProductList();
+    },
+    
+    mounted: function() {
+        routerExecutor(this);
+    },
 });
+
+function routerExecutor(thisObj) {
+    switch (currentUrl) {
+        case 'product':
+            thisObj.$App.getProductById(thisObj);
+            break;
+    }
+}

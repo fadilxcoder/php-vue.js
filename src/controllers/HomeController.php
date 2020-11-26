@@ -81,6 +81,35 @@ class HomeController extends Controller{
         ]);
     }
 
+    /**
+     * @ROUTE : /get-single-product
+     */
+    public function getSingleProduct()
+    {
+        $resp = $this->hm->first(
+            [
+                'tbl' => 'vue_products',
+                'column' => 'id',
+                'value' => $_GET['id'],
+                'type' => 'object',
+            ]
+        );
+
+        $faker = [
+            'pt_1' => $this->faker->ipv4,
+            'pt_2' => $this->faker->timezone,
+            'pt_3' => $this->faker->iban(null),
+            'pt_4' => $this->faker->creditCardType,
+            'title' => $this->faker->company,
+        ];
+
+        echo json_encode([
+            'title' => $resp->name . ' | CRUD-HELIFOX',
+            'response' => $resp,
+            'faker' => $faker
+        ]);
+    }
+
     public function __404()
     {
         $this->view->render('error/index');

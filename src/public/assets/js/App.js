@@ -5,7 +5,7 @@ class App
     }
 
     init() {
-        console.log('init..');
+        console.log(currentUrl);
     }
     
     getProductList(app) {
@@ -19,6 +19,13 @@ class App
     
     viewSingleProductUrlGenerator(id) {
         return routingUrl + 'product?id=' + id;
+    }
+
+    getProductById(app) {
+        var elem = document.getElementById('product');
+        var prodId = elem.getAttribute('data-product-id');
+        // console.log(prodId);
+        console.log(app);
     }
 }
 
