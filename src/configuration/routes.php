@@ -39,5 +39,6 @@ $route['get-product-list'] = 'HomeController@getProductList';
 
 $route['product'] = 'HomeController@singleProduct';
 $route['get-single-product'] = 'HomeController@getSingleProduct';
+$route['get-related-products'] = 'HomeController@getRelatedProducts';
 
 $route['populate-db'] = 'HomeController@populateDatabase';

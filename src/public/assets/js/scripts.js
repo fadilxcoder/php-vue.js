@@ -7,7 +7,14 @@ var app = new Vue({
     
     data: {
         products: '',
-        productId: '',
+        name: '',
+        description: '',
+        title: '',
+        list_1: '',
+        list_2: '',
+        list_3: '',
+        list_4: '',
+        image: '',
     },
     
     methods: {
@@ -16,6 +23,10 @@ var app = new Vue({
         },
         getSingleProductUrl: function(id) {
             return this.$App.viewSingleProductUrlGenerator(id);
+        },
+        getImageWithRandomText: function(img) {
+            console.log(this.$App.getRandomText());
+            return img + '?text=' + this.$App.getRandomText();
         }
     },
     

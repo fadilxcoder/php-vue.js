@@ -12,7 +12,7 @@ class HomeController extends Controller{
     public function __construct()
     {
         parent::__construct();
-        Debugger::enable(Debugger::DEVELOPMENT);
+        // Debugger::enable(Debugger::DEVELOPMENT);
         $this->faker = Factory::create();
         $this->model->call('Home');
         $this->hm = new Home;
@@ -34,6 +34,7 @@ class HomeController extends Controller{
 
     /**
      * @ROUTE : /home
+     * @TYPE : UI
      */
     public function index()
     {
@@ -44,16 +45,31 @@ class HomeController extends Controller{
     
     /**
      * @ROUTE : /get-product-list
+     * @TYPE : JSON
      */
     public function getProductList()
     {
+        $resp = $this->hm->selectAll('vue_products', 'OBJECT_CON');
+        $products = [];
+
+        foreach($resp as $_r):
+            $products[] = [
+                'id' =>  $_r->id,
+                'name' =>  $_r->name,
+                'description' =>  $_r->description,
+                'image' =>  $_r->image . '?text=' . $this->faker->jobTitle,
+            ];
+        endforeach;
+        
+        shuffle($products);
         echo json_encode([
-            'products' => $this->hm->selectAll('vue_products', 'OBJECT_CON')
+            'products' => $products,
         ]);
     }
     
     /**
      * @ROUTE : /product
+     * @TYPE : UI
      */
     public function singleProduct()
     {
@@ -66,23 +82,15 @@ class HomeController extends Controller{
             ]
         );
 
-        $faker = [
-            'pt_1' => $this->faker->ipv4,
-            'pt_2' => $this->faker->timezone,
-            'pt_3' => $this->faker->iban(null),
-            'pt_4' => $this->faker->creditCardType,
-            'title' => $this->faker->company,
-        ];
-
         $this->view->render('single-product', [
             'title' => $resp->name . ' | CRUD-HELIFOX',
-            'response' => $resp,
-            'faker' => $faker
+            'id' => $resp->id,
         ]);
     }
 
     /**
      * @ROUTE : /get-single-product
+     * @TYPE : JSON
      */
     public function getSingleProduct()
     {
@@ -106,10 +114,39 @@ class HomeController extends Controller{
         echo json_encode([
             'title' => $resp->name . ' | CRUD-HELIFOX',
             'response' => $resp,
-            'faker' => $faker
+            'faker' => $faker,
+            'image' =>  $resp->image . '?text=' . $this->faker->jobTitle,
         ]);
     }
 
+    /**
+     * @ROUTE : /get-related-products
+     * @TYPE : JSON
+     */
+    public function getRelatedProducts()
+    {
+        $resp = $this->hm->selectAll('vue_products', 'OBJECT_CON');
+        $products = [];
+
+        foreach($resp as $_r):
+            $products[] = [
+                'id' =>  $_r->id,
+                'name' =>  $_r->name,
+                'description' =>  $_r->description,
+                'image' =>  $_r->image . '?text=' . $this->faker->jobTitle,
+            ];
+        endforeach;
+
+        shuffle($products);
+        $products = array_slice($products, 0, 4);
+        echo json_encode([
+            'products' => $products,
+        ]);
+    }
+
+    /**
+     * 404 UI
+     */
     public function __404()
     {
         $this->view->render('error/index');
@@ -117,6 +154,7 @@ class HomeController extends Controller{
     
     /**
      * @ROUTE : /populate-db
+     * @TYPE : EXEC
      */
     public function populateDatabase()
     {
