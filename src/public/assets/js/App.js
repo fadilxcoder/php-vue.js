@@ -30,6 +30,13 @@ class App
         thisObj._getRandomProducts(app);
     }
 
+    fetchThisProductById(app, prodId) {
+        var thisObj = this;
+        var route = routingUrl + 'get-single-product?id=' + prodId;
+        thisObj._populateSingleProduct(app, route);
+        thisObj._getRandomProducts(app);
+    }
+
     _populateSingleProduct(app, route) {
         axios.get(route)
         .then(function(response) {

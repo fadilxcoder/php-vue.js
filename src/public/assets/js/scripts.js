@@ -27,6 +27,10 @@ var app = new Vue({
         getImageWithRandomText: function(img) {
             console.log(this.$App.getRandomText());
             return img + '?text=' + this.$App.getRandomText();
+        },
+        fetchThisProduct: function(pid, e) {
+            e.preventDefault();
+            this.$App.fetchThisProductById(this, pid);
         }
     },
     

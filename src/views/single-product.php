@@ -27,7 +27,8 @@
 <h3 class="my-4">Related Products</h3>
 <div class="row">
 	<div class="col-md-3 col-sm-6 mb-4" v-for="_prod in products">
-		<a :href="getSingleProductUrl(_prod.id)">
+		<!-- <a :href="getSingleProductUrl(_prod.id)"> -->
+		<a href="#" @click="fetchThisProduct(_prod.id, $event)">
 			<img class="img-fluid" :src="_prod.image" :alt="_prod.name">
 		</a>
 	</div>
