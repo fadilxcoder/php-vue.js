@@ -6,7 +6,7 @@ var app = new Vue({
     el:'#vue-app',
     
     data: {
-        products: '',
+        products: [],
         name: '',
         description: '',
         title: '',
@@ -15,6 +15,7 @@ var app = new Vue({
         list_3: '',
         list_4: '',
         image: '',
+        searchProduct: '',
     },
     
     methods: {
@@ -31,6 +32,12 @@ var app = new Vue({
         fetchThisProduct: function(pid, e) {
             e.preventDefault();
             this.$App.fetchThisProductById(this, pid);
+        }
+    },
+
+    computed: {
+        searchProds: function() {
+            return this.$App.searchForProducts(this, this.searchProduct);
         }
     },
     

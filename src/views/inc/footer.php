@@ -1,7 +1,7 @@
 </div>
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; fadixcoder <?php echo date('Y'); ?></p>
+        <p class="m-0 text-center text-white">Copyright &copy; fadilxcoder <?php echo date('Y'); ?></p>
     </div>
 </footer>
 

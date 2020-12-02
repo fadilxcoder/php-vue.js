@@ -6,7 +6,19 @@
 
 <?php $this->start('landingPage') ?>
     <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item" v-for="_prod in products">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="search" class="form-control" v-model="searchProduct" placeholder="Search for...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- <div class="col-lg-4 col-sm-6 portfolio-item" v-for="_prod in products"> -->
+        <div class="col-lg-4 col-sm-6 portfolio-item" v-for="_prod in searchProds">
             <div class="card h-100">
                 <!--<a href="#"><img class="card-img-top" :src="_prod.image" alt=""></a>-->
                 <a v-bind:href="getSingleProductUrl(_prod.id)">

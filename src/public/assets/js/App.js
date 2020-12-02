@@ -37,6 +37,17 @@ class App
         thisObj._getRandomProducts(app);
     }
 
+    searchForProducts(app, search) {
+        var thisObj = this;
+        return app.products.filter( function(p) {
+            return thisObj._filterProductsByName(p, search);
+        });
+    }
+
+    _filterProductsByName(product, searchKey) {
+        return product.name.toLocaleLowerCase().includes(searchKey.toLocaleLowerCase());
+    }
+
     _populateSingleProduct(app, route) {
         axios.get(route)
         .then(function(response) {
