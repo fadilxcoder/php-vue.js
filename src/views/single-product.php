@@ -20,12 +20,12 @@
 			<li>{{ list_4 }}</li>
 		</ul>
         <div class="my-3">
-            <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
+            <a class="btn btn-lg btn-secondary btn-block" href="#" @click="activateRelatedProducts(true, $event)">CLICK ME</a>
         </div>
 	</div>
 </div>
-<h3 class="my-4">Related Products</h3>
-<div class="row">
+<h3 class="my-4" v-if="isRelatedActive">Related Products</h3>
+<div class="row" v-if="isRelatedProducts == 'active'">
 	<div class="col-md-3 col-sm-6 mb-4" v-for="_prod in products">
 		<!-- <a :href="getSingleProductUrl(_prod.id)"> -->
 		<a href="#" @click="fetchThisProduct(_prod.id, $event)">

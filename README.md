@@ -27,5 +27,5 @@
 - `@click`
 - `v-for`
 - `v-model`
-- 
-
+- `v-if`
+- `$event` in HTML code

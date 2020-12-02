@@ -16,6 +16,8 @@ var app = new Vue({
         list_4: '',
         image: '',
         searchProduct: '',
+        isRelatedActive: false,
+        isRelatedProducts: '',
     },
     
     methods: {
@@ -32,6 +34,12 @@ var app = new Vue({
         fetchThisProduct: function(pid, e) {
             e.preventDefault();
             this.$App.fetchThisProductById(this, pid);
+        },
+        activateRelatedProducts: function(value, e) {
+            e.preventDefault();
+            this.isRelatedActive = value;
+            this.isRelatedProducts = (value) ? 'active' : 'inactive';
+            this.$App.getRandomProducts(this);
         }
     },
 

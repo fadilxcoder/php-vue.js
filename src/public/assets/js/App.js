@@ -27,14 +27,14 @@ class App
         var route = routingUrl + 'get-single-product?id=' + prodId;
         app.products = [];
         thisObj._populateSingleProduct(app, route);
-        thisObj._getRandomProducts(app);
+        thisObj.getRandomProducts(app);
     }
 
     fetchThisProductById(app, prodId) {
         var thisObj = this;
         var route = routingUrl + 'get-single-product?id=' + prodId;
         thisObj._populateSingleProduct(app, route);
-        thisObj._getRandomProducts(app);
+        thisObj.getRandomProducts(app);
     }
 
     searchForProducts(app, search) {
@@ -43,6 +43,15 @@ class App
             return thisObj._filterProductsByName(p, search);
         });
     }
+
+    getRandomProducts(app) {
+        var route = routingUrl + 'get-related-products';
+        axios.get(route)
+		.then(function(response) {
+		    app.products = response.data.products
+		});
+    }
+
 
     _filterProductsByName(product, searchKey) {
         return product.name.toLocaleLowerCase().includes(searchKey.toLocaleLowerCase());
@@ -60,14 +69,6 @@ class App
             app.list_3 = response.data.faker.pt_3;
             app.list_4 = response.data.faker.pt_4;
         });
-    }
-
-    _getRandomProducts(app) {
-        var route = routingUrl + 'get-related-products';
-        axios.get(route)
-		.then(function(response) {
-		    app.products = response.data.products
-		});
     }
 }
 
