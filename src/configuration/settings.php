@@ -25,6 +25,7 @@
 */
 
 define('URL', 'http://vue-php.local/');
+// define('URL', 'http://iox.000webhostapp.com/php-vue-js/');
 
 /*
 *   Database configuration. Set ACTIVATE to TRUE if project will be using MySQL DATABASE and fill connection details.
@@ -34,6 +35,10 @@ define('HOST',      'localhost');
 define('USERNAME',  'root');
 define('PASSWORD',  '');
 define('DATABASE',  'experimental_db');
+// define('HOST',      'localhost');
+// define('USERNAME',  'id2234615_jqm_usr');
+// define('PASSWORD',  '2sP4TtqNPW8KfuD');
+// define('DATABASE',  'id2234615_jqm_db');
 
 /*
 * DEFINE ENVIRONMENT, Allowed environments variables : development / production

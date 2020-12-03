@@ -2,6 +2,8 @@
 
 - Use of HeliFox & dependencies
 - PHP routes are sent to JS in `footer.php`, **currentUrl** & **routingUrl**
+- URL : my project : http://iox.000webhostapp.com/php-vue-js/
+- URL : front : https://fadilxcoder.github.io/php-vue.js/src/index.html
 
 # Homepage
 
