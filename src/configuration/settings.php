@@ -24,17 +24,25 @@
 *   Define the base url of the project
 */
 
-define('URL', 'http://vue-php.local/');
+// define('URL', 'http://vue-php.local/');
+define('URL', 'http://localhost:8881/');
 // define('URL', 'http://iox.000webhostapp.com/php-vue-js/');
 
 /*
 *   Database configuration. Set ACTIVATE to TRUE if project will be using MySQL DATABASE and fill connection details.
 */
 define('ACTIVATE',  'TRUE');
-define('HOST',      'localhost');
-define('USERNAME',  'root');
-define('PASSWORD',  '');
-define('DATABASE',  'experimental_db');
+
+// define('HOST',      'localhost');
+// define('USERNAME',  'root');
+// define('PASSWORD',  '');
+// define('DATABASE',  'experimental_db');
+
+define('HOST',      'database');
+define('USERNAME',  'myuser');
+define('PASSWORD',  'secret');
+define('DATABASE',  'mydb');
+
 // define('HOST',      'localhost');
 // define('USERNAME',  'id2234615_jqm_usr');
 // define('PASSWORD',  '2sP4TtqNPW8KfuD');

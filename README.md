@@ -1,9 +1,14 @@
 # General
 
 - Use of HeliFox & dependencies
+- `unzipper.php` - unzip project on server
 - PHP routes are sent to JS in `footer.php`, **currentUrl** & **routingUrl**
 - URL : my project : http://iox.000webhostapp.com/php-vue-js/
 - URL : front : https://fadilxcoder.github.io/php-vue.js/src/index.html
+- In **public** folder
+- - `composer install` - PHP dependencies
+- - `npm install` - webpack & babel
+- - File `webpack.config.js`, created manually for settings of JS compilation
 
 # Homepage
 

@@ -3,3 +3,5 @@
 /vendor
 /.idea
 /php_error_log
+/public/node_modules/
+/public/dist/
