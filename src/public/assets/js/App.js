@@ -52,6 +52,52 @@ class App
 		});
     }
 
+    contactFormSubmission(app) {
+        var thisObj = this;
+        var formData = new FormData();
+        var route = routingUrl + 'form-submission';
+
+        for (var field in app.contact) {
+            formData.append(field, app.contact[field])
+        }
+
+        var options = {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        };
+
+        axios.post(route, formData, options)
+        .then(function (response) {
+            if (response.data.HTTP === 'valid') {
+                app.isSuccess = true;
+                return response;
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+        .then(function(response) {
+            if (response.data.HTTP === 'valid') {
+                var elem = document.getElementById('success-id');
+                elem.innerHTML = response.data.iid;
+                thisObj._clearContactForm(app);
+                thisObj.getContactsList(app);
+            }
+        })
+        .catch(function (err) {
+            console.log(err);
+        })
+        ;
+    }
+
+    getContactsList(app) {
+        var route = routingUrl + 'get-contacts';
+        axios.get(route)
+		.then(function(response) {
+		    app.contacts = response.data.contacts
+		});
+    }
 
     _filterProductsByName(product, searchKey) {
         return product.name.toLocaleLowerCase().includes(searchKey.toLocaleLowerCase());
@@ -69,6 +115,12 @@ class App
             app.list_3 = response.data.faker.pt_3;
             app.list_4 = response.data.faker.pt_4;
         });
+    }
+
+    _clearContactForm(app) {
+        for (var field in app.contact) {
+            app.contact[field] = '';
+        }
     }
 }
 

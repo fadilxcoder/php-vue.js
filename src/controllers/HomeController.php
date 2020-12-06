@@ -145,6 +145,69 @@ class HomeController extends Controller{
     }
 
     /**
+     * @ROUTE : /contact-us
+     * @TYPE : UI
+     */
+    public function contactUs()
+    {
+        $this->view->render('contact-us', [
+            'title' => 'Contact Us | CRUD HELIFOX'
+        ]);
+    }
+
+    /**
+     * @ROUTE : /form-submission
+     * @TYPE : JSON
+     */
+    public function contactFormSubmission()
+    {
+        if ($_POST) {
+
+            $iid = $this->hm->insert('contacts', [
+                'name' => $_POST['name'],
+                'phone' => $_POST['phone'],
+                'email' => $_POST['email'],
+                'message' => $_POST['message'],
+            ]);
+
+            echo json_encode([
+                'HTTP' => 'valid',
+                'iid' => $iid
+            ]);
+
+            return;
+        }
+
+        echo json_encode([
+            'HTTP' => 'Invalid',
+        ]);
+    }
+
+    /**
+     * @ROUTE : /get-contacts
+     * @TYPE : JSON
+     */
+    public function getContactList()
+    {
+        $resp = $this->hm->selectAll('contacts', 'OBJECT_CON');
+        $contacts = [];
+
+        foreach($resp as $_r):
+            $contacts[] = [
+                'name' =>  $_r->name,
+                'phone' =>  $_r->phone,
+                'email' =>  $_r->email,
+                'message' =>  $_r->message,
+            ];
+        endforeach;
+        
+        shuffle($contacts);
+        echo json_encode([
+            'contacts' => $contacts,
+        ]);
+    }
+
+    /**
      * 404 UI
      */
     public function __404()

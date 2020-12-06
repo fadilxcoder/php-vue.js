@@ -18,6 +18,14 @@ var app = new Vue({
         searchProduct: '',
         isRelatedActive: false,
         isRelatedProducts: '',
+        isSuccess: false,
+        contact: {
+            name: '',
+            phone: '',
+            email: '',
+            message: '',
+        },
+        contacts: [],
     },
     
     methods: {
@@ -40,6 +48,10 @@ var app = new Vue({
             this.isRelatedActive = value;
             this.isRelatedProducts = (value) ? 'active' : 'inactive';
             this.$App.getRandomProducts(this);
+        },
+        contactForm: function(event) {
+            event.preventDefault();
+            this.$App.contactFormSubmission(this);
         }
     },
 
@@ -51,6 +63,7 @@ var app = new Vue({
     
     created: function() {
         this.getProductList();
+        this.$App.getContactsList(this);
     },
     
     mounted: function() {

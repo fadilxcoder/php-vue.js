@@ -34,11 +34,17 @@
 */
 $route['default']   = 'HomeController@index';
 
+// UI
 $route['home']      = 'HomeController@index';
-$route['get-product-list'] = 'HomeController@getProductList';
+$route['contact-us'] = 'HomeController@contactUs';
 
+// JSON
+$route['get-product-list'] = 'HomeController@getProductList';
 $route['product'] = 'HomeController@singleProduct';
 $route['get-single-product'] = 'HomeController@getSingleProduct';
 $route['get-related-products'] = 'HomeController@getRelatedProducts';
+$route['form-submission'] = 'HomeController@contactFormSubmission';
+$route['get-contacts'] = 'HomeController@getContactList';
 
+// Handler
 $route['populate-db'] = 'HomeController@populateDatabase';

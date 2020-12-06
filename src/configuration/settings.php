@@ -25,8 +25,13 @@
 */
 
 // define('URL', 'http://vue-php.local/');
+// define('ROUTING_URL', 'http://vue-php.local/');
+
 define('URL', 'http://localhost:8881/');
+define('ROUTING_URL', 'http://localhost:8881?url=');
+
 // define('URL', 'http://iox.000webhostapp.com/php-vue-js/');
+// define('ROUTING_URL', 'http://iox.000webhostapp.com/php-vue-js/');
 
 /*
 *   Database configuration. Set ACTIVATE to TRUE if project will be using MySQL DATABASE and fill connection details.
