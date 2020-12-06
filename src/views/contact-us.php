@@ -50,7 +50,7 @@
                     <textarea rows="10" cols="100" class="form-control" id="message" name="message" v-model="contact.message" maxlength="999" style="resize:none" required></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+            <button type="submit" class="btn btn-primary" id="sendMessageButton" v-show="contact.name && contact.phone && contact.email && contact.message">Send Message</button>
         </form>
     </div>
 </div>

@@ -9,16 +9,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo ROUTING_URL . 'contact-us' ?>">CONTACT US</a>
+                    <a class="nav-link" target="_blank" href="<?php echo URL . 'adminer.php' ?>">Adminer UI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="<?php echo ROUTING_URL . 'populate-db' ?>">DB Handler</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        NAV DD
+                        Utility
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                        <a class="dropdown-item" href="<?php echo URL ?>"> DP ## 1</a>
-                        <a class="dropdown-item" href="<?php echo URL ?>"> DP ## 2</a>
-                        <a class="dropdown-item" href="<?php echo URL ?>"> DP ## 3</a>
+                        <a class="dropdown-item" href="<?php echo ROUTING_URL . 'contact-us' ?>">Contact Us</a>
+                        <a class="dropdown-item" href="<?php echo ROUTING_URL . 'invoicing' ?>">Invoicing</a>
                     </div>
                 </li>
             </ul>

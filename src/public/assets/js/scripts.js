@@ -26,6 +26,7 @@ var app = new Vue({
             message: '',
         },
         contacts: [],
+        items: [],
     },
     
     methods: {
@@ -52,23 +53,39 @@ var app = new Vue({
         contactForm: function(event) {
             event.preventDefault();
             this.$App.contactFormSubmission(this);
+        },
+        addRowToInvoice: function(e) {
+            this.items.push({ 
+                description: "", 
+                quantity: 1, 
+                price: 0 
+            });
         }
     },
 
     computed: {
         searchProds: function() {
             return this.$App.searchForProducts(this, this.searchProduct);
+        },
+        total: function() {
+            return this.$App.calculateInvoiceTotal(this);
         }
     },
     
     created: function() {
         this.getProductList();
         this.$App.getContactsList(this);
+        this.$App.getInvoiceList(this);
     },
     
     mounted: function() {
         routerExecutor(this);
     },
+    filters: {
+        currency: function(value) {
+            return value.toFixed(2);
+        }
+    }
 });
 
 function routerExecutor(thisObj) {

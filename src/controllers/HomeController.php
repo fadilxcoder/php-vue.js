@@ -208,6 +208,40 @@ class HomeController extends Controller{
     }
 
     /**
+     * @ROUTE : /invoicing
+     * @TYPE : UI
+     */
+    public function viewInvoicing()
+    {
+        $this->view->render('invoicing', [
+            'title' => 'Invoicing | CRUD HELIFOX'
+        ]);
+    }
+
+    /**
+     * @ROUTE : /get-invoices
+     * @TYPE : JSON
+     */
+    public function getInvoicesList()
+    {
+        $resp = $this->hm->selectAll('invoice', 'OBJECT_CON');
+        $invoices = [];
+
+        foreach($resp as $_r):
+            $invoices[] = [
+                'description' =>  $_r->description,
+                'price' =>  $_r->price,
+                'quantity' =>  $_r->quantity,
+            ];
+        endforeach;
+        
+        shuffle($invoices);
+        echo json_encode([
+            'invoices' => $invoices,
+        ]);
+    }
+
+    /**
      * 404 UI
      */
     public function __404()
@@ -221,12 +255,12 @@ class HomeController extends Controller{
      */
     public function populateDatabase()
     {
-        for($i=0 ; $i < 25 ; $i++):
+        for($i=0 ; $i < 5 ; $i++):
         /*
-            $this->hm->insert('vue_products', [
-                'name' => $this->faker->name,
-                'description' => $this->faker->paragraph($nbSentences = 3, $variableNbSentences = true),
-                'image' => 'http://placehold.it/750x500',
+            $this->hm->insert('invoice', [
+                'description' => $this->faker->catchPhrase,
+                'price' => $this->faker->numberBetween($min = 100, $max = 1000),
+                'quantity' => $this->faker->numberBetween($min = 1, $max = 25),
             ])
             ;
         */

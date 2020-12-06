@@ -36,15 +36,17 @@ $route['default']   = 'HomeController@index';
 
 // UI
 $route['home']      = 'HomeController@index';
+$route['product'] = 'HomeController@singleProduct';
 $route['contact-us'] = 'HomeController@contactUs';
+$route['invoicing'] = 'HomeController@viewInvoicing';
 
 // JSON
 $route['get-product-list'] = 'HomeController@getProductList';
-$route['product'] = 'HomeController@singleProduct';
 $route['get-single-product'] = 'HomeController@getSingleProduct';
 $route['get-related-products'] = 'HomeController@getRelatedProducts';
 $route['form-submission'] = 'HomeController@contactFormSubmission';
 $route['get-contacts'] = 'HomeController@getContactList';
+$route['get-invoices'] = 'HomeController@getInvoicesList';
 
 // Handler
 $route['populate-db'] = 'HomeController@populateDatabase';

@@ -99,6 +99,23 @@ class App
 		});
     }
 
+    getInvoiceList(app) {
+        var route = routingUrl + 'get-invoices';
+        axios.get(route)
+		.then(function(response) {
+		    app.items = response.data.invoices
+		});
+    }
+
+    calculateInvoiceTotal(app){
+
+        const calcSumInvoice = function(accumulator, item) {
+            return accumulator + item.price * item.quantity;
+        };
+
+        return app.items.reduce(calcSumInvoice, 0);
+    }
+
     _filterProductsByName(product, searchKey) {
         return product.name.toLocaleLowerCase().includes(searchKey.toLocaleLowerCase());
     }

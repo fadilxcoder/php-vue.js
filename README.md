@@ -9,6 +9,7 @@
 - - `composer install` - PHP dependencies
 - - `npm install` - webpack & babel
 - - File `webpack.config.js`, created manually for settings of JS compilation
+- - Build JS : `npm run build` or `npm run build:watch`
 
 # Homepage
 
