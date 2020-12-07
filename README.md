@@ -29,6 +29,19 @@
 - Render data in vue format
 - Related products (Click to change data in DOM instantaneous)
 
+# Contact Us
+
+- List contact details (DB) in vue
+- Form submission - save in DB in vue (axios) & JS Formdata
+- Looping over fields in form (JS) for submission
+
+# Invoicing
+
+- Read data from DB
+- Add new row
+- Auto calculation - JS *accumulator* function
+- **filters** in vue (currency)
+
 # Vue 
 
 - `:data-product-id` == `v-bind`
@@ -37,3 +50,4 @@
 - `v-model`
 - `v-if`
 - `$event` in HTML code
+- `@submit` for form submission

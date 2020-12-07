@@ -24,11 +24,11 @@
 *   Define the base url of the project
 */
 
-// define('URL', 'http://vue-php.local/');
-// define('ROUTING_URL', 'http://vue-php.local/');
+define('URL', 'http://vue-php.local/');
+define('ROUTING_URL', 'http://vue-php.local/');
 
-define('URL', 'http://localhost:8881/');
-define('ROUTING_URL', 'http://localhost:8881?url=');
+// define('URL', 'http://localhost:8881/');
+// define('ROUTING_URL', 'http://localhost:8881?url=');
 
 // define('URL', 'http://iox.000webhostapp.com/php-vue-js/');
 // define('ROUTING_URL', 'http://iox.000webhostapp.com/php-vue-js/');
@@ -38,15 +38,15 @@ define('ROUTING_URL', 'http://localhost:8881?url=');
 */
 define('ACTIVATE',  'TRUE');
 
-// define('HOST',      'localhost');
-// define('USERNAME',  'root');
-// define('PASSWORD',  '');
-// define('DATABASE',  'experimental_db');
+define('HOST',      'localhost');
+define('USERNAME',  'root');
+define('PASSWORD',  '');
+define('DATABASE',  'vue_php_database');
 
-define('HOST',      'database');
-define('USERNAME',  'myuser');
-define('PASSWORD',  'secret');
-define('DATABASE',  'mydb');
+// define('HOST',      'database');
+// define('USERNAME',  'myuser');
+// define('PASSWORD',  'secret');
+// define('DATABASE',  'mydb');
 
 // define('HOST',      'localhost');
 // define('USERNAME',  'id2234615_jqm_usr');
