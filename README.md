@@ -17,10 +17,10 @@
 
 # URLs
 
-- https://github.com/fadilxcoder/php-vue.js (**Vue & JSON file - static**)
+- https://github.com/fadilxcoder/php-vue.js (**Vue - HFX3**)
 - https://github.com/fadilxcoder/php-vue.js/tree/video-tutorial (**PHP & Vue**)
 - https://github.com/fadilxcoder/php-vue.js/tree/master (**PHP / Vue CRUD**)
-- 
+- https://github.com/fadilxcoder/php-vue.js/tree/front (**Vue & JSON file - static**)
 
 # Resources
 
