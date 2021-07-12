@@ -11,6 +11,13 @@
 - - File `webpack.config.js`, created manually for settings of JS compilation
 - - Build JS : `npm run build` or `npm run build:watch`
 
+# Repo
+
+- https://github.com/fadilxcoder/php-vue.js (**Vue - HFX3**)
+- https://github.com/fadilxcoder/php-vue.js/tree/video-tutorial (**PHP & Vue Tuto**)
+- https://github.com/fadilxcoder/php-vue.js/tree/master (**PHP / Vue CRUD / Modal**)
+- https://github.com/fadilxcoder/php-vue.js/tree/front (**Vue & JSON file - static**)
+
 # Homepage
 
 - Uses vue to list products
