@@ -7,7 +7,7 @@
 <?php $this->start('landingPage') ?>
 <div class="row">
     <div class="col-md-12">
-        <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+        <img class="img-fluid rounded mb-4" src="https://via.placeholder.com/1200x300" alt="">
     </div>
 </div>
 <div class="row">
